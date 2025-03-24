@@ -2,30 +2,31 @@
 <html>
 
 <body>
-    <p>How to use a JavaScript Class.</p>
-    <p id="student1"></p>
-    <p id="student2"></p>
+    <h2>JavaScript Class Inheritance</h2>
+    <p>Use the "extends" keyword to inherit all methods from another class.</p>
+    <p>Use the "super" method to call the parent's constructor function.</p>
+    <p id="details"></p>
     <script>
-        // creatinga a class
-        class student {
-            constructor(name, year) {
-                this.name = name;
-                this.year = year;
+        class Car {
+            constructor(brand) {
+                this.carname = brand;
             }
-            // creating age method for class student
-            age() {
-                let date = new Date();
-                return date.getFullYear() - this.year;
+            present() {
+                return 'I have a ' + this.carname;
             }
         }
-        // use student class with two objects
-        student1 = new student("Lara", 1999);
-        document.getElementById("student1").innerHTML = "My name is " + student1.name + ". I was born in " + student1.year + ". And my age is " + student1.age()
-
-        student2 = new student("Bleep", 2024);
-        document.getElementById("student2").innerHTML = "my name is " + student2.name + ". I  was born in " + student2.year + ". And my age is " + student2.age();
+        class Model extends Car {
+            constructor(brand, mod) {
+                super(brand);
+                this.model = mod;
+            }
+            show() {
+                return this.present() + ', it is a ' + this.model;
+            }
+        }
+        let myCar = new Model("Toyota", "Supra mk 4");
+        document.getElementById("details").innerHTML = myCar.show();
     </script>
-
 </body>
 
 </html>
